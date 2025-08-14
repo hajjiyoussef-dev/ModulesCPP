@@ -15,6 +15,7 @@
 
 
 #include <iostream>
+#include <iomanip>
 #include "Contact.h"
 
 class PhoneBook
@@ -28,7 +29,8 @@ class PhoneBook
         PhoneBook();
 
         void addContact();
-        void searchContacts() const ;
+        void searchContacts() const;
+        std::string stringCat(std::string &str) const;
 };
 
 
