@@ -79,21 +79,35 @@ void PhoneBook::addContact(){
 
 void PhoneBook::searchContacts() const{
 
+
+    int E_Index = 0;
+
     if (countContact == 0 )
         return;
     
 
     std::cout << "Index | First Name | last Name | NicName " << std::endl;
+    std::cout   << std::setw(10) << "Index" << "|"
+                << std::setw(10) << "First Name" << "|"
+                << std::setw(10) << "Last Name" << "|"
+                << std::setw(10) << "NicName" << "\n";
     for (int i = 0; i < countContact && i < 8; i++){
         std::cout   << std::setw(10) << i + 1 <<  "|"
-                    << std::setw(10) << stringCat(contact[i].getFirstName())
+                    << std::setw(10) << stringCat(contact[i].getFirstName()) << "|"
+                    << std::setw(10) << stringCat(contact[i].getLastName()) << "|"
+                    << std::setw(10) << stringCat(contact[i].getNickName()) << "\n";
     }
+
+    std::cout << "Enter Index ";
+    std::getline(std::cin, E_Index);
+    if ((E_Index + 1) > 8)
+        std::cout << "the index is out of range " << std::endl;
     
 
 }
 
 
-std::string PhoneBook::stringCat(std::string &str) const{
+std::string PhoneBook::stringCat(std::string  const &str){
     
     if (str.length() > 10){
         return (str.substr(0, 9) + ".");
