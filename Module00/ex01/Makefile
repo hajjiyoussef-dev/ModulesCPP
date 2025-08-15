@@ -1,6 +1,6 @@
 NAME = PhoneBook
 
-SRC = 
+SRC = Contact.cpp PhoneBook.cpp main.cpp
 OBJC = ${SRC:.cpp=.o}
 RM = rm -rf 
 CC = c++
@@ -8,13 +8,15 @@ CFLAGE = -Wall -Wextra -Werror -std=c++98
 
 all: ${NAME}
 
-%.o: %.cpp
+%.o: %.cpp Contact.h PhoneBook.h
 	${CC} ${CFLAGE} -c  $< -o $@
+
 ${NAME}: ${OBJC}
 	${CC} ${CFLAGE} ${OBJC} -o ${NAME}
 
 clean:
 	${RM} ${OBJC}
+
 fclean: clean
 	${RM} ${NAME}
 

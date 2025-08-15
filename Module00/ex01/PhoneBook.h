@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhajji <yhajji@student.42.fr>              #+#  +:+       +#+        */
+/*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-08-13 07:56:54 by yhajji            #+#    #+#             */
-/*   Updated: 2025-08-13 07:56:54 by yhajji           ###   ########.fr       */
+/*   Created: 2025/08/13 07:56:54 by yhajji            #+#    #+#             */
+/*   Updated: 2025/08/15 06:29:36 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class PhoneBook
 
         void addContact();
         void searchContacts() const;
-        std::string stringCat(std::string &str) const;
+        std::string stringCat(const std::string &str) const;
 };
 
 

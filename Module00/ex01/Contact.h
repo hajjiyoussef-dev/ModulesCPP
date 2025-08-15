@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhajji <yhajji@student.42.fr>              #+#  +:+       +#+        */
+/*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-08-13 09:32:32 by yhajji            #+#    #+#             */
-/*   Updated: 2025-08-13 09:32:32 by yhajji           ###   ########.fr       */
+/*   Created: 2025/08/13 09:32:32 by yhajji            #+#    #+#             */
+/*   Updated: 2025/08/15 06:40:40 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define CONTACT_H
 
 #include <iostream>
+#include <cctype>
 
 class Contact
 {
@@ -25,11 +26,11 @@ private:
     std::string darkestSecret;
 public:
     
-   void Contact::setFirstName(std::string value);
-   void Contact::setLastName(std::string value);
-   void Contact::setNickName(std::string value);
-   void Contact::setPhoneNumber(std::string value);
-   void Contact::setDarkestSecret(std::string value);
+   void setFirstName(std::string  value);
+   void setLastName(std::string  value);
+   void setNickName(std::string  value);
+   void setPhoneNumber(std::string  value);
+   void setDarkestSecret(std::string  value);
 
 
    std::string getFirstName() const;

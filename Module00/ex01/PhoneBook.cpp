@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhajji <yhajji@student.42.fr>              #+#  +:+       +#+        */
+/*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-08-13 08:20:18 by yhajji            #+#    #+#             */
-/*   Updated: 2025-08-13 08:20:18 by yhajji           ###   ########.fr       */
+/*   Created: 2025/08/13 08:20:18 by yhajji            #+#    #+#             */
+/*   Updated: 2025/08/15 06:46:08 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,43 +23,43 @@ void PhoneBook::addContact(){
     Contact newcontact ;
 
     std::string firstname,  lastname,   phonenumber, nickname, darkesecret;
-    std::cout << "Enter first name " ;
+    std::cout << "Enter first name: " ;
     std::getline(std::cin, firstname);
     if (firstname.empty()){
         while (firstname.empty()){
-            std::cout << "Enter first name " ;
+            std::cout << "Enter first name: " ;
             std::getline(std::cin, firstname);
         }
     }
-    std::cout << "Enter last name " ;
+    std::cout << "Enter last name: " ;
     std::getline(std::cin, lastname);
     if (lastname.empty()){
         while (lastname.empty()){
-            std::cout << "Enter last name " ;
+            std::cout << "Enter last name: " ;
             std::getline(std::cin, lastname);
         }
     }
-    std::cout << "Enter nickname ";
+    std::cout << "Enter nickname: ";
     std::getline(std::cin, nickname);
     if (nickname.empty()){
         while (nickname.empty()){
-            std::cout << "Enter nickname ";
+            std::cout << "Enter nickname: ";
             std::getline(std::cin, nickname);
         }
     }
-    std::cout << "Enter phone number ";
+    std::cout << "Enter phone number: ";
     std::getline(std::cin, phonenumber);
     if (phonenumber.empty()){
         while (phonenumber.empty()){
-            std::cout << "Enter phone number ";
+            std::cout << "Enter phone number: ";
             std::getline(std::cin, phonenumber);
         }
     }
-    std::cout  << "Enter darkes Secret ";
+    std::cout  << "Enter darkes Secret: ";
     std::getline(std::cin, darkesecret);
     if (darkesecret.empty()){
         while (darkesecret.empty()){
-            std::cout  << "Enter darkes Secret ";
+            std::cout  << "Enter darkes Secret: ";
             std::getline(std::cin, darkesecret);
         }
     }
@@ -80,13 +80,10 @@ void PhoneBook::addContact(){
 void PhoneBook::searchContacts() const{
 
 
-    int E_Index = 0;
+    std::string E_Index;
 
     if (countContact == 0 )
         return;
-    
-
-    std::cout << "Index | First Name | last Name | NicName " << std::endl;
     std::cout   << std::setw(10) << "Index" << "|"
                 << std::setw(10) << "First Name" << "|"
                 << std::setw(10) << "Last Name" << "|"
@@ -100,14 +97,24 @@ void PhoneBook::searchContacts() const{
 
     std::cout << "Enter Index ";
     std::getline(std::cin, E_Index);
-    if ((E_Index + 1) > 8)
+    if (E_Index.empty() || !std::all_of(E_Index.begin(), E_Index.end(), ::isdigit)){
+        std::cout << "the index is in wrong format" << std::endl;
+        return;
+    }
+    int num = atoi(E_Index.c_str()); 
+    if ( num > 8 || num < 1 || num > countContact){
         std::cout << "the index is out of range " << std::endl;
+        return ;
+    }
+    else{
+        std::cout   <<  "First Name " << contact[num - 1].getFirstName() << std::endl ;
+        std::cout   << "Last Name " << contact[num - 1].getLastName() << std::endl ;
+        std::cout   << "NicKname "  << contact[num - 1].getNickName() << std::endl ;
+    }
     
-
 }
 
-
-std::string PhoneBook::stringCat(std::string  const &str){
+std::string PhoneBook::stringCat(const std::string &str) const{
     
     if (str.length() > 10){
         return (str.substr(0, 9) + ".");
