@@ -21,9 +21,11 @@ int main(void){
 
     std::string cmd;
 
-    while(true){
+    while( true ){
         std::cout << "enter one of three commands (ADD, SEARCH and EXIT): ";
-        std::getline(std::cin, cmd);
+        if (!std::getline(std::cin, cmd)){
+            break;
+        }
         if (strcmp(cmd.c_str(), "ADD") == 0){
             pb.addContact();
         }
@@ -35,4 +37,4 @@ int main(void){
         }
     }
     return (0);
-}
+}    

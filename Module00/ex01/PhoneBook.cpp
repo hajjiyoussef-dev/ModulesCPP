@@ -12,7 +12,6 @@
 
 #include "PhoneBook.h"
 
-
 PhoneBook::PhoneBook(){
     countContact = 0;
     index = 0;
@@ -24,39 +23,46 @@ void PhoneBook::addContact(){
 
     std::string firstname,  lastname,   phonenumber, nickname, darkesecret;
     std::cout << "Enter first name: " ;
-    std::getline(std::cin, firstname);
-    if (firstname.empty()){
-        while (firstname.empty()){
-            std::cout << "Enter first name: " ;
-            std::getline(std::cin, firstname);
-        }
+    if (!std::getline(std::cin, firstname)){
+        std::cout << std::endl;
+        return ;
+    }
+    while (firstname.empty()){
+        std::cout << "Enter first name: " ;
+        std::getline(std::cin, firstname);
     }
     std::cout << "Enter last name: " ;
-    std::getline(std::cin, lastname);
-    if (lastname.empty()){
-        while (lastname.empty()){
-            std::cout << "Enter last name: " ;
-            std::getline(std::cin, lastname);
-        }
+    if (!std::getline(std::cin, lastname)){
+        std::cout << std::endl;
+        return ;
+    }
+    while (lastname.empty()){
+        std::cout << "Enter last name: " ;
+        std::getline(std::cin, lastname);
     }
     std::cout << "Enter nickname: ";
-    std::getline(std::cin, nickname);
-    if (nickname.empty()){
-        while (nickname.empty()){
-            std::cout << "Enter nickname: ";
-            std::getline(std::cin, nickname);
-        }
+    if (!std::getline(std::cin, nickname)){
+        std::cout << std::endl;
+        return ;
+    }
+    while (nickname.empty()){
+        std::cout << "Enter nickname: ";
+        std::getline(std::cin, nickname);
     }
     std::cout << "Enter phone number: ";
-    std::getline(std::cin, phonenumber);
-    if (phonenumber.empty()){
-        while (phonenumber.empty()){
-            std::cout << "Enter phone number: ";
-            std::getline(std::cin, phonenumber);
-        }
+    if (!std::getline(std::cin, phonenumber)){
+        std::cout << std::endl;
+        return ;
+    }
+    while (phonenumber.empty() || !std::all_of(phonenumber.begin(), phonenumber.end(), ::isdigit)){
+        std::cout << "Enter phone number: ";
+        std::getline(std::cin, phonenumber);
     }
     std::cout  << "Enter darkes Secret: ";
-    std::getline(std::cin, darkesecret);
+    if (!std::getline(std::cin, darkesecret)){
+        std::cout << std::endl;
+        return ;
+    }
     if (darkesecret.empty()){
         while (darkesecret.empty()){
             std::cout  << "Enter darkes Secret: ";
@@ -82,8 +88,10 @@ void PhoneBook::searchContacts() const{
 
     std::string E_Index;
 
-    if (countContact == 0 )
+    if (countContact == 0){
+        std::cout << "Phone Book is empty " << std::endl;
         return;
+    }
     std::cout   << std::setw(10) << "Index" << "|"
                 << std::setw(10) << "First Name" << "|"
                 << std::setw(10) << "Last Name" << "|"
@@ -95,7 +103,7 @@ void PhoneBook::searchContacts() const{
                     << std::setw(10) << stringCat(contact[i].getNickName()) << "\n";
     }
 
-    std::cout << "Enter Index ";
+    std::cout << "Enter Index: ";
     std::getline(std::cin, E_Index);
     if (E_Index.empty() || !std::all_of(E_Index.begin(), E_Index.end(), ::isdigit)){
         std::cout << "the index is in wrong format" << std::endl;
@@ -107,9 +115,9 @@ void PhoneBook::searchContacts() const{
         return ;
     }
     else{
-        std::cout   <<  "First Name " << contact[num - 1].getFirstName() << std::endl ;
-        std::cout   << "Last Name " << contact[num - 1].getLastName() << std::endl ;
-        std::cout   << "NicKname "  << contact[num - 1].getNickName() << std::endl ;
+        std::cout   <<  "First Name: " << contact[num - 1].getFirstName() << std::endl ;
+        std::cout   << "Last Name: " << contact[num - 1].getLastName() << std::endl ;
+        std::cout   << "NicKname: "  << contact[num - 1].getNickName() << std::endl ;
     }
     
 }
