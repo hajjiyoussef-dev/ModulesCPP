@@ -10,25 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Account.hpp>
+#include "Account.hpp"
 
 
-static int Account::getNbAccounts(void ){
+int Account::getNbAccounts(void ){
 
+    return (1);
 }
 
-static int Account::getTotalAmount(void ){
+int Account::getTotalAmount(void ){
 
+    return (1);
 }
 
-static int Account::getNbDeposits(void ){
+int Account::getNbDeposits(void ){
 
+    return (1);
 }
 
-static int Account::getNbWithdrawals(void ){
+int Account::getNbWithdrawals(void ){
 
+    return (1);
 }
 
-static void Account::displayAccountsInfos(void ){
-    
+void Account::displayAccountsInfos(void ){
+
+    return ;
 }
