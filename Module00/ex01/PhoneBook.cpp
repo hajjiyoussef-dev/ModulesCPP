@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 08:20:18 by yhajji            #+#    #+#             */
-/*   Updated: 2025/08/15 06:46:08 by hrami            ###   ########.fr       */
+/*   Updated: 2025/08/17 06:22:56 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void PhoneBook::addContact(){
         std::cout << std::endl;
         return ;
     }
-    while (phonenumber.empty() || !std::all_of(phonenumber.begin(), phonenumber.end(), ::isdigit)){
+    while (phonenumber.empty() || !std::all_of(phonenumber.begin(), phonenumber.end(), ::isdigit)) {
         std::cout << "Enter phone number: ";
         std::getline(std::cin, phonenumber);
     }
