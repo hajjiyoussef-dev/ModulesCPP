@@ -17,6 +17,17 @@ PhoneBook::PhoneBook(){
     index = 0;
 };
 
+
+
+bool is_all_digits(const std::string &s){
+
+    for (size_t i = 0; i < s.size(); i++){
+        if (!std::isdigit(static_cast<unsigned char>(s[i])))
+            return (false);
+    }
+    return (true);
+}
+
 void PhoneBook::addContact(){
     
     Contact newcontact ;
@@ -54,7 +65,7 @@ void PhoneBook::addContact(){
         std::cout << std::endl;
         return ;
     }
-    while (phonenumber.empty() || !std::all_of(phonenumber.begin(), phonenumber.end(), ::isdigit)) {
+    while (phonenumber.empty() || !is_all_digits(phonenumber)) {
         std::cout << "Enter phone number: ";
         std::getline(std::cin, phonenumber);
     }
@@ -105,7 +116,7 @@ void PhoneBook::searchContacts() const{
 
     std::cout << "Enter Index: ";
     std::getline(std::cin, E_Index);
-    if (E_Index.empty() || !std::all_of(E_Index.begin(), E_Index.end(), ::isdigit)){
+    if (E_Index.empty() || !is_all_digits(E_Index)){
         std::cout << "the index is in wrong format" << std::endl;
         return;
     }
