@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/14 20:58:58 by yhajji            #+#    #+#             */
-/*   Updated: 2025/09/14 20:59:03 by yhajji           ###   ########.fr       */
+/*   Created: 2025/09/16 10:24:02 by yhajji            #+#    #+#             */
+/*   Updated: 2025/09/16 12:37:40 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,15 @@
 
 
 
-int main(void)
-{
-    Zombie* z1 = newZombie("Foo");
+int main(void){
 
-    z1->announce();
+    int N = 5;
 
-    delete(z1);
-
-    randomChump("bar");
-
+    Zombie* z1 = zombieHorde(N, "Walker");
+    
+    for (int i = 0; i < 5; i++){
+        z1[i].announce();
+    }
+    delete[] z1;
     return (0);
 }
-
-
-
-

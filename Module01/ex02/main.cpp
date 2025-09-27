@@ -5,28 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/14 20:58:58 by yhajji            #+#    #+#             */
-/*   Updated: 2025/09/14 20:59:03 by yhajji           ###   ########.fr       */
+/*   Created: 2025/09/16 16:34:50 by yhajji            #+#    #+#             */
+/*   Updated: 2025/09/16 17:14:36 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-
-
+#include <iostream>
 
 int main(void)
 {
-    Zombie* z1 = newZombie("Foo");
+    
+    std::string str = "HI THIS IS BRAIN";
 
-    z1->announce();
+    std::string* stringPTR = &str;
+    std::string& stringREF = str;
 
-    delete(z1);
+    std::cout << "Address of str :" << &str << std::endl;
+    std::cout << "Address held by stringPTR : " << stringPTR << std::endl ;
+    std::cout << "Address of stringREF : " << &stringREF << std::endl;
+    
 
-    randomChump("bar");
+    std::cout << "value of str : " << str << std::endl ;
+    std::cout << "Value pointed by PTR : " << *stringPTR << std::endl ;
+    std::cout << "Value of REF : " << stringREF << std::endl;
 
     return (0);
 }
-
-
-
-
