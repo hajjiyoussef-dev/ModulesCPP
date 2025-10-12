@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.h                                        :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/13 07:56:54 by yhajji            #+#    #+#             */
-/*   Updated: 2025/10/07 18:16:29 by yhajji           ###   ########.fr       */
+/*   Created: 2025/10/11 17:00:57 by yhajji            #+#    #+#             */
+/*   Updated: 2025/10/12 10:39:03 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
-#define PHONEBOOK_H
-
+#ifndef HUMANA_HPP
+#define HUMANA_HPP
 
 #include <iostream>
-#include <iomanip>
-#include "Contact.h"
-#include <string.h>
+#include "Weapon.hpp"
 
-#include <cstdlib>
-
-class PhoneBook
+class HumanA
 {
     private:
-        Contact contact[8];
-        int countContact; 
-        int index;
-    
+        std::string name;
+        Weapon &weapon;
     public:
-        PhoneBook();
-
-        void addContact();
-        void searchContacts();
-        std::string stringCat(const std::string &str);
+        HumanA(std::string name, Weapon& Weapon);
+        void attack(void);
 };
 
 
-#endif
+
+
+
+
+#endif 

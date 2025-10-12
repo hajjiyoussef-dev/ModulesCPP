@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.h                                        :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/13 07:56:54 by yhajji            #+#    #+#             */
-/*   Updated: 2025/10/07 18:16:29 by yhajji           ###   ########.fr       */
+/*   Created: 2025/10/12 11:05:49 by yhajji            #+#    #+#             */
+/*   Updated: 2025/10/12 11:10:21 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
-#define PHONEBOOK_H
+#include "HumanB.hpp"
 
 
-#include <iostream>
-#include <iomanip>
-#include "Contact.h"
-#include <string.h>
 
-#include <cstdlib>
-
-class PhoneBook
-{
-    private:
-        Contact contact[8];
-        int countContact; 
-        int index;
-    
-    public:
-        PhoneBook();
-
-        void addContact();
-        void searchContacts();
-        std::string stringCat(const std::string &str);
-};
+HumanB::HumanB(std::string name) : name(name), weapon(NULL){}
 
 
-#endif
+void HumanB::setWeapon(Weapon &weapon){
+   this->weapon =  &weapon;
+}
+
+void HumanB::attack(void){
+ 
+    if (weapon)
+        std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+    else 
+        std::cout << name <<  " has no weapon" << std::endl;
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 09:32:32 by yhajji            #+#    #+#             */
-/*   Updated: 2025/08/15 06:40:40 by hrami            ###   ########.fr       */
+/*   Updated: 2025/10/07 18:16:01 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ public:
    void setDarkestSecret(std::string  value);
 
 
-   std::string getFirstName() const;
-   std::string getLastName() const;
-   std::string getNickName() const;
-   std::string getPhoneNumber() const;
-   std::string getDarkestSecret() const;
+   std::string getFirstName() ;
+   std::string getLastName() ;
+   std::string getNickName() ;
+   std::string getPhoneNumber() ;
+   std::string getDarkestSecret() ;
     
 };
 

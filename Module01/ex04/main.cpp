@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.h                                        :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/13 07:56:54 by yhajji            #+#    #+#             */
-/*   Updated: 2025/10/07 18:16:29 by yhajji           ###   ########.fr       */
+/*   Created: 2025/10/12 13:29:17 by yhajji            #+#    #+#             */
+/*   Updated: 2025/10/12 14:38:58 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
-#define PHONEBOOK_H
-
-
 #include <iostream>
-#include <iomanip>
-#include "Contact.h"
-#include <string.h>
 
-#include <cstdlib>
+int main(int ac, char **av){
 
-class PhoneBook
-{
-    private:
-        Contact contact[8];
-        int countContact; 
-        int index;
+
+    if (ac != 4)
+    {
+        std::cout << "Usage: ./replace <filename> <s1> <s2>" << std::endl;
+        return (1);
+    }
     
-    public:
-        PhoneBook();
+    std::string filename = av[1];
+    std::string s1 = av[2];
+    std::string s2 = av[3]; 
 
-        void addContact();
-        void searchContacts();
-        std::string stringCat(const std::string &str);
-};
+    
 
-
-#endif
+    
+    
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhajji <yhajji@student.42.fr>              #+#  +:+       +#+        */
+/*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-08-13 09:34:26 by yhajji            #+#    #+#             */
-/*   Updated: 2025-08-13 09:34:26 by yhajji           ###   ########.fr       */
+/*   Created: 2025/08/13 09:34:26 by yhajji            #+#    #+#             */
+/*   Updated: 2025/10/07 18:16:16 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,21 @@ void Contact::setDarkestSecret(std::string value){
     darkestSecret = value;
 }
 
-std::string Contact::getFirstName() const{
+std::string Contact::getFirstName() {
     return firstName;
 }
 
-std::string Contact::getLastName() const{
+std::string Contact::getLastName() {
     return lastName;
 }
 
-std::string Contact::getNickName() const{
+std::string Contact::getNickName() {
     return nickName;
 }
-std::string Contact::getPhoneNumber() const{
+std::string Contact::getPhoneNumber() {
     return phoneNumber;
 }
 
-std::string Contact::getDarkestSecret() const{
+std::string Contact::getDarkestSecret(){
     return darkestSecret;
 }

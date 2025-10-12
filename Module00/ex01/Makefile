@@ -4,7 +4,7 @@ SRC = Contact.cpp PhoneBook.cpp main.cpp
 OBJC = ${SRC:.cpp=.o}
 RM = rm -rf 
 CC = c++
-CFLAGE = -Wall -Wextra -Werror -std=c++98  -g3 -fsanitize=address 
+CFLAGE = -Wall -Wextra -Werror -std=c++98 
 
 all: ${NAME}
 
@@ -21,5 +21,3 @@ fclean: clean
 	${RM} ${NAME}
 
 re: clean all
-
-.PHONY: clean re all 

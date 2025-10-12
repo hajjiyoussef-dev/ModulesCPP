@@ -1,5 +1,3 @@
-
-
 NAME = Account
 
 SRC =  tests.cpp Account.cpp
@@ -22,8 +20,6 @@ clean:
 	${RM} ${OBJC}
 
 fclean: clean
-	${RM} ${OBJC}
+	${RM} ${NAME}
 
 re: fclean all
-
-.PHONY: clean all re 

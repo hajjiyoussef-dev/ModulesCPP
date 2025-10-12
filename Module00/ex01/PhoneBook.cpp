@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 08:20:18 by yhajji            #+#    #+#             */
-/*   Updated: 2025/08/17 06:22:56 by hrami            ###   ########.fr       */
+/*   Updated: 2025/10/07 18:53:02 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ PhoneBook::PhoneBook(){
 bool is_all_digits(const std::string &s){
 
     for (size_t i = 0; i < s.size(); i++){
-        if (!std::isdigit(static_cast<unsigned char>(s[i])))
+        if (!std::isdigit((unsigned char)(s[i])))
             return (false);
     }
     return (true);
@@ -40,8 +40,13 @@ void PhoneBook::addContact(){
     }
     while (firstname.empty()){
         std::cout << "Enter first name: " ;
-        std::getline(std::cin, firstname);
+        if (!std::getline(std::cin, firstname))
+        {
+            std::cout << std::endl;
+            return ;
+        }
     }
+    
     std::cout << "Enter last name: " ;
     if (!std::getline(std::cin, lastname)){
         std::cout << std::endl;
@@ -49,7 +54,10 @@ void PhoneBook::addContact(){
     }
     while (lastname.empty()){
         std::cout << "Enter last name: " ;
-        std::getline(std::cin, lastname);
+        if (!std::getline(std::cin, lastname)){
+            std::cout << std::endl;
+            return ;
+        }
     }
     std::cout << "Enter nickname: ";
     if (!std::getline(std::cin, nickname)){
@@ -58,7 +66,10 @@ void PhoneBook::addContact(){
     }
     while (nickname.empty()){
         std::cout << "Enter nickname: ";
-        std::getline(std::cin, nickname);
+        if (!std::getline(std::cin, nickname)){
+            std::cout << std::endl;
+            return ;
+        }
     }
     std::cout << "Enter phone number: ";
     if (!std::getline(std::cin, phonenumber)){
@@ -67,7 +78,10 @@ void PhoneBook::addContact(){
     }
     while (phonenumber.empty() || !is_all_digits(phonenumber)) {
         std::cout << "Enter phone number: ";
-        std::getline(std::cin, phonenumber);
+        if (!std::getline(std::cin, phonenumber)){
+            std::cout << std::endl;
+            return ;
+        }
     }
     std::cout  << "Enter darkes Secret: ";
     if (!std::getline(std::cin, darkesecret)){
@@ -77,7 +91,10 @@ void PhoneBook::addContact(){
     if (darkesecret.empty()){
         while (darkesecret.empty()){
             std::cout  << "Enter darkes Secret: ";
-            std::getline(std::cin, darkesecret);
+            if (!std::getline(std::cin, darkesecret)){
+                std::cout << std::endl;
+                return ;
+            }
         }
     }
     newcontact.setFirstName(firstname);
@@ -94,7 +111,7 @@ void PhoneBook::addContact(){
     
 }
 
-void PhoneBook::searchContacts() const{
+void PhoneBook::searchContacts(){
 
 
     std::string E_Index;
@@ -126,14 +143,17 @@ void PhoneBook::searchContacts() const{
         return ;
     }
     else{
+        std::cout   <<  "Index: " << contact[num - 1].getNickName() << std::endl ;
         std::cout   <<  "First Name: " << contact[num - 1].getFirstName() << std::endl ;
         std::cout   << "Last Name: " << contact[num - 1].getLastName() << std::endl ;
         std::cout   << "NicKname: "  << contact[num - 1].getNickName() << std::endl ;
+        std::cout   << "phone number: "  << contact[num - 1].getPhoneNumber() << std::endl ;
+        std::cout   << "darkes Secret: "  << contact[num - 1].getDarkestSecret() << std::endl ;
     }
     
 }
 
-std::string PhoneBook::stringCat(const std::string &str) const{
+std::string PhoneBook::stringCat(const std::string &str){
     
     if (str.length() > 10){
         return (str.substr(0, 9) + ".");

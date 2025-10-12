@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 01:19:41 by yhajji            #+#    #+#             */
-/*   Updated: 2025/08/17 06:27:00 by hrami            ###   ########.fr       */
+/*   Updated: 2025/10/07 17:25:36 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Account::Account( int initial_deposit ) :
     {
         _nbAccounts++;
         _totalAmount += initial_deposit;
-
+        _amount = initial_deposit;
         _displayTimestamp();
         std::cout   << " index:" << _accountIndex <<  ";"
                     << "amount:" << _amount << ";"
@@ -38,7 +38,7 @@ Account::Account( int initial_deposit ) :
 
 Account::~Account( void ){
     _displayTimestamp();
-    std::cout   << "index:" << _accountIndex << ";"
+    std::cout   << " index:" << _accountIndex << ";"
                 << "amount:" << _amount << ";"
                 << "closed" << std::endl;
 }
@@ -46,7 +46,7 @@ Account::~Account( void ){
 
 void Account::_displayTimestamp( void ){
     
-    std::time_t currentTime  = std::time(nullptr);
+    std::time_t currentTime  = std::time(0);
     std::tm *localTime = std::localtime(&currentTime);
     std::cout   << "["
                 << ( 1900 + localTime->tm_year )
@@ -68,7 +68,7 @@ void Account::makeDeposit(int deposit){
     _totalAmount += deposit;
     _totalNbDeposits += 1;
     std::cout   << ";deposit:" << deposit << ";"
-                << "amount:" << _amount << "; "
+                << "amount:" << _amount << ";"
                 << "nb_deposits:" << _nbDeposits 
                 << std::endl;
 }
@@ -84,7 +84,8 @@ bool Account::makeWithdrawal( int withdrawal ){
     
     _amount -= withdrawal;
     _nbWithdrawals += 1;
-    _nbWithdrawals += 1;
+    _totalAmount -= withdrawal;
+    _totalNbWithdrawals += 1;
     std::cout   << ";withdrawal:" << withdrawal
                 << ";amount:" << _amount
                 << ";nb_withdrawals:" << _nbWithdrawals

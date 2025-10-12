@@ -14,8 +14,8 @@ ${NAME}: ${OBJC}
 
 clean: 
 	${RM} ${OBJC}
+
 fclean: clean 
 	${RM} ${NAME}
-re: fclean all
 
-.PHONY: all re clean
+re: fclean all
