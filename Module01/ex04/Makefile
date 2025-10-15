@@ -2,10 +2,10 @@ NAME =  replace
 
 SRC = main.cpp
 
-OBJC = $(SRC:.c=.o)
+OBJC = $(SRC:.cpp=.o)
 
 RM = rm -rf 
-CC = c++;
+CC = c++
 CPPFLAGE = -Wall -Wextra -Werror -std=c++98 
 
 all: ${NAME}
@@ -14,12 +14,12 @@ all: ${NAME}
 	${CC} ${CPPFLAGE} -c $< -o $@ 
 
 ${NAME}: ${OBJC}
-	${CC} ${CFLAGE} -o ${NAME} ${OBJC}
+	${CC} ${CPPFLAGE} -o ${NAME} ${OBJC}
 
 clean:
 	${RM} ${OBJC}
 
-fclean:
+fclean: clean 
 	${RM} ${NAME}
 
 re: fclean all
