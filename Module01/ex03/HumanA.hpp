@@ -6,7 +6,7 @@
 /*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 17:00:57 by yhajji            #+#    #+#             */
-/*   Updated: 2025/10/12 10:39:03 by yhajji           ###   ########.fr       */
+/*   Updated: 2025/10/16 10:50:11 by yhajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class HumanA
         std::string name;
         Weapon &weapon;
     public:
-        HumanA(std::string name, Weapon& Weapon);
+        HumanA(const std::string name, Weapon& Weapon);
         void attack(void);
 };
 

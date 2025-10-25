@@ -46,5 +46,7 @@ int main(int ac, char **av){
         return (1);
     }
     outfile << line;
+    outfile.close();
+    inputfile.close();
     return (0);
 }

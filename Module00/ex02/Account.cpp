@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Account.cpp                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yhajji <yhajji@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/16 01:19:41 by yhajji            #+#    #+#             */
-/*   Updated: 2025/10/07 17:25:36 by yhajji           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Account.hpp"
 
 
@@ -19,14 +7,7 @@ int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
 
-Account::Account( int initial_deposit ) :
-
-    _accountIndex(_nbAccounts),
-    _amount(_totalAmount),
-    _nbDeposits(_totalNbDeposits),
-    _nbWithdrawals(_totalNbWithdrawals)
-
-    {
+Account::Account( int initial_deposit ) : _accountIndex(_nbAccounts), _amount(_totalAmount), _nbDeposits(_totalNbDeposits), _nbWithdrawals(_totalNbWithdrawals) {
         _nbAccounts++;
         _totalAmount += initial_deposit;
         _amount = initial_deposit;

@@ -7,11 +7,21 @@ PhoneBook::PhoneBook(){
 };
 
 
-
 bool is_all_digits(const std::string &s){
 
     for (size_t i = 0; i < s.size(); i++){
+        if (s[i] == '+')
+            i++;
         if (!std::isdigit((unsigned char)(s[i])))
+            return (false);
+    }
+    return (true);
+}
+
+bool is_print(std::string str){
+    
+    for (size_t i = 0; i < str.size(); i++){
+        if (!std::isprint(str[i]))
             return (false);
     }
     return (true);
@@ -27,9 +37,9 @@ void PhoneBook::addContact(){
         std::cout << std::endl;
         return ;
     }
-    while (firstname.empty()){
+    while (firstname.empty() || !is_print(firstname)){
         std::cout << "Enter first name: " ;
-        if (!std::getline(std::cin, firstname))
+        if (!std::getline(std::cin, firstname) || !is_print(firstname))
         {
             std::cout << std::endl;
             return ;
@@ -41,33 +51,33 @@ void PhoneBook::addContact(){
         std::cout << std::endl;
         return ;
     }
-    while (lastname.empty()){
+    while (lastname.empty() || !is_print(lastname)){
         std::cout << "Enter last name: " ;
-        if (!std::getline(std::cin, lastname)){
+        if (!std::getline(std::cin, lastname) || !is_print(lastname)){
             std::cout << std::endl;
             return ;
         }
     }
     std::cout << "Enter nickname: ";
-    if (!std::getline(std::cin, nickname)){
+    if (!std::getline(std::cin, nickname) ){
         std::cout << std::endl;
         return ;
     }
-    while (nickname.empty()){
+    while (nickname.empty() || !is_print(nickname)){
         std::cout << "Enter nickname: ";
-        if (!std::getline(std::cin, nickname)){
+        if (!std::getline(std::cin, nickname) || !is_print(nickname)){
             std::cout << std::endl;
             return ;
         }
     }
     std::cout << "Enter phone number: ";
-    if (!std::getline(std::cin, phonenumber)){
+    if (!std::getline(std::cin, phonenumber) ){
         std::cout << std::endl;
         return ;
     }
-    while (phonenumber.empty() || !is_all_digits(phonenumber)) {
+    while (phonenumber.empty() || !is_all_digits(phonenumber) || !is_print(phonenumber)) {
         std::cout << "Enter phone number: ";
-        if (!std::getline(std::cin, phonenumber)){
+        if (!std::getline(std::cin, phonenumber) || !is_print(phonenumber)){
             std::cout << std::endl;
             return ;
         }
@@ -77,10 +87,10 @@ void PhoneBook::addContact(){
         std::cout << std::endl;
         return ;
     }
-    if (darkesecret.empty()){
-        while (darkesecret.empty()){
+    if (darkesecret.empty() || !is_print(darkesecret)){
+        while (darkesecret.empty() || !is_print(darkesecret)){
             std::cout  << "Enter darkes Secret: ";
-            if (!std::getline(std::cin, darkesecret)){
+            if (!std::getline(std::cin, darkesecret) || !is_print(darkesecret)){
                 std::cout << std::endl;
                 return ;
             }

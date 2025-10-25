@@ -5,16 +5,16 @@ SRC = main.cpp
 OBJC = $(SRC:.cpp=.o)
 
 RM = rm -rf 
-CC = c++
+abouabba = c++
 CPPFLAGE = -Wall -Wextra -Werror -std=c++98 
 
 all: ${NAME}
 
 %.o: %.cpp 
-	${CC} ${CPPFLAGE} -c $< -o $@ 
+	${abouabba} ${CPPFLAGE} -c $< -o $@ 
 
 ${NAME}: ${OBJC}
-	${CC} ${CPPFLAGE} -o ${NAME} ${OBJC}
+	${abouabba} ${CPPFLAGE} -o ${NAME} ${OBJC}
 
 clean:
 	${RM} ${OBJC}

@@ -7,10 +7,7 @@ int main(int argc, char **argv)
 
        for (int i = 1; argv[i]; i++){
         for (int j = 0; argv[i][j] != '\0'; j++){
-            if (isalpha(argv[i][j]) && tolower(argv[i][j]))
-                std::cout << (char)(toupper(argv[i][j]));
-            else 
-                std::cout << argv[i][j];
+                std::cout << (char)(std::toupper(argv[i][j]));
         }
        }
        std::cout << std::endl;

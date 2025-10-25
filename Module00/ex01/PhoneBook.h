@@ -7,7 +7,7 @@
 #include <iomanip>
 #include "Contact.h"
 #include <string.h>
-
+#include <ctype.h>
 #include <cstdlib>
 
 class PhoneBook
