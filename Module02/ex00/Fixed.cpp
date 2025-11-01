@@ -12,6 +12,7 @@ Fixed::Fixed() : number(0)
 Fixed::Fixed(const Fixed &obj){
     std::cout << "Copy constructor called" << std::endl;
     this->number = obj.number;
+    
 }
 
 Fixed &Fixed::operator=(const Fixed &obj){

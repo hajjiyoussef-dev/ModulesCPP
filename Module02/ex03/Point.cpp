@@ -7,7 +7,7 @@ Point::Point() : x(0), y(0){}
 Point::~Point() {}
 
 
-Point::Point(float value_x, float value_y): x(value_x), y(value_y) {}
+Point::Point(float value_x, float value_y) : x(value_x), y(value_y) {}
 
 Point::Point(const Point &obj) : x(obj.x), y(obj.y){}
 
@@ -44,5 +44,5 @@ bool bsp( Point const a, Point const b, Point const c, Point const point ){
 
     if (A1 == 0 || A2 == 0 || A3 == 0)
         return false;
-    return (std::fabs(A - (A1 + A2 + A3)) < 0.0001f);
+    return (A == (A1 + A2 + A3));
 }

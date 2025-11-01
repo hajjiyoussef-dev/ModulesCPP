@@ -1,7 +1,6 @@
 #include "Fixed.hpp"
 
 
-
 const int Fixed::fractionBits = 8;
 
 
@@ -57,7 +56,7 @@ std::ostream& operator<<(std::ostream &out, const Fixed &obj)
     return (out);
 }
 
-Fixed Fixed::operator*(const Fixed &obj) const{
+Fixed Fixed::operator*(const Fixed &obj) const {
 
     return Fixed(this->toFloat() * obj.toFloat());
 }
