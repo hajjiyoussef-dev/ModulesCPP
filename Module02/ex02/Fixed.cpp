@@ -42,6 +42,7 @@ Fixed::Fixed(const float n)
 float Fixed::toFloat( void ) const {
 
     return (float)number / (1 << fractionBits);
+
 }
 
 int Fixed::toInt( void ) const{

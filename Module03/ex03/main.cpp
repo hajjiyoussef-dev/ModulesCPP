@@ -4,7 +4,7 @@
 int main( void )
 {
 
-    DiamondTrap dia("Diamondy");
+    DiamondTrap dia("joni");
 
     dia.attack("target");
     dia.beRepaired(1);
