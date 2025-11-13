@@ -10,6 +10,7 @@ ClapTrap::ClapTrap(){
 }
 
 ClapTrap::ClapTrap(std::string name) : name(name){
+    
     this->hitPoint = 100;
     this->Energy =  50;
     this->AttackDamage = 30;
