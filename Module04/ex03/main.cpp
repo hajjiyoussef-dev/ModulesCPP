@@ -19,6 +19,7 @@ int main()
             material[i] = new Cure();
         src->learnMateria(material[i]);
     }
+
     ICharacter* me = new Character("me");
     AMateria* tmp, *tmp1, *tmp2 , *tmp3;
     tmp = src->createMateria("ice");
@@ -29,15 +30,11 @@ int main()
     me->equip(tmp2);
     tmp3 = src->createMateria("cure");
     me->equip(tmp3);
-    me->unequip(1); 
-    delete tmp1;
-    me->equip(tmp2);
-    // me->unequip(3);
-    // delete tmp3;
-    ICharacter* bob = new Character("bob");
-    ICharacter* bob1 = new Character("HHH1");
-    ICharacter* bob2 = new Character("HHH2");
-    ICharacter* bob3 = new Character("HHH3");
+
+    ICharacter* bob  =  new Character("bob");
+    ICharacter* bob1 =  new Character("bob1");
+    ICharacter* bob2 =  new Character("bob2");
+    ICharacter* bob3 =  new Character("bob3");
     me->use(0, *bob);
     me->use(1, *bob1);
     me->use(2, *bob2);
