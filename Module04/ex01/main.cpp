@@ -44,6 +44,17 @@ int main()
     tmp2 = test2;
     std::cout << &tmp2 << std::endl;
     std::cout << "------------------------------------- 3"<< std::endl;
+
+
+    Cat a;
+
+    Cat c;
+
+    c = a;
+
+    Cat b = c;
+
+    b = c;
     
     return 0;
 }

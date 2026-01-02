@@ -2,7 +2,7 @@
 
 Cat::Cat() : Animal() {
     std::cout << "Cat default constructor called " << std::endl;
-    this->type = "cat";
+    this->type = "Cat";
 }
 
 Cat::Cat(const Cat &obj) : Animal(obj){
