@@ -1,6 +1,6 @@
-NAME = Bureaucrat
+NAME = Form
 
-SRC = main.cpp Bureaucrat.cpp 
+SRC = main.cpp Bureaucrat.cpp Form.cpp
 
 OBJC = ${SRC:.cpp=.o}
 CFLAGE = -Wall -Wextra -Werror -std=c++98  
@@ -9,7 +9,7 @@ RM = rm -rf
 
 all: ${NAME}
 
-%.o: %.cpp Bureaucrat.hpp 
+%.o: %.cpp Bureaucrat.hpp Form.hpp
 	${CC} ${CFLAGE} -c $< -o $@
 
 ${NAME}: ${OBJC}
