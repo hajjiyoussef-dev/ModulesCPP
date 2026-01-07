@@ -6,13 +6,13 @@ class Bureaucrat ;
 
 class AForm
 {
-    private:
+    protected:
         const std::string name ;
         const int gradeToSign;
         const int gradeToExecute;
         bool isSigned;
     public:
-        AForm(const std::string name, const int gradeToSign, const int gradeToExecute, bool isSigned);
+        AForm(const std::string name, const int gradeToSign, const int gradeToExecute);
         AForm(const AForm &obj);
         AForm& operator=(const AForm &obj);
         virtual ~AForm();
@@ -30,6 +30,11 @@ class AForm
         };
 
         class GradeTooLowException : public std::exception{
+
+            public:
+                const char *what() const throw();
+        };
+        class FormNotSignedException : public std::exception{
 
             public:
                 const char *what() const throw();

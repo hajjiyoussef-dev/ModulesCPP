@@ -1,9 +1,9 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-AForm::AForm(const std::string name, const int gradeToSign, const int gradeToExecute, bool isSigned) : name(name), gradeToSign(gradeToSign), gradeToExecute(gradeToExecute)
+AForm::AForm(const std::string name, const int gradeToSign, const int gradeToExecute) : name(name), gradeToSign(gradeToSign), gradeToExecute(gradeToExecute)
 {
-    this->isSigned = isSigned;
+    this->isSigned = false;
     if (gradeToSign < 1 || gradeToExecute < 1)
         throw GradeTooHighException();
     if (gradeToSign > 150 || gradeToExecute > 150)
@@ -53,6 +53,11 @@ const char * AForm::GradeTooLowException::what() const throw(){
 
     return " Grade Too Low ";
 }
+
+const char* AForm::FormNotSignedException::what() const throw(){
+
+    return " Form is not signed ";
+} 
 
 AForm::~AForm() {}
 

@@ -1,0 +1,21 @@
+#pragma once 
+
+#include <iostream>
+#include "Bureaucrat.hpp"
+#include "AForm.hpp"
+#include <ctime>
+#include <cstdlib>
+
+class RobotomyRequestForm : public AForm
+{
+    private:
+        std::string target;
+    public:
+        RobotomyRequestForm();
+        RobotomyRequestForm(const RobotomyRequestForm& obj);
+        RobotomyRequestForm& operator=(const RobotomyRequestForm& obj);
+        void execute(Bureaucrat const& e) const;
+        ~RobotomyRequestForm();
+};
+
+
