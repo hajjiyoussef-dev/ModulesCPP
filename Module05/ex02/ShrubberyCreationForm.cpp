@@ -23,6 +23,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const& e) const{
 
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{
+ShrubberyCreationForm::~ShrubberyCreationForm(){
+
+    std::cout << "test" << std::endl;
 }
