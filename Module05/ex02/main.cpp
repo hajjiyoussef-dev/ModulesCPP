@@ -1,67 +1,57 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 
 
 int main(void){
 
-    std::cout << "===== VALID CREATION ====="<< std::endl;
-    try
-    {
-        Bureaucrat B("youssef", 2);
-        Form f("Tax sign ", 2, 1, true);
-        std::cout << B << std::endl;
-        std::cout << f << std::endl;
+    srand(time(NULL));
 
-        B.signForm(f);
-        std::cout << f << std::endl;
-        
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    std::cout << "\n===== GRADE TOO LOW TO SIGN =====" << std::endl;
-    try
-    {
-        Bureaucrat B1("amine", 120);
-        Form f1("Tax sign", 2, 1, false);
+    std::cout << "===== BUREAUCRATS =====" << std::endl;
 
-        std::cout << B1 << std::endl;
-        std::cout << f1 << std::endl;
+    Bureaucrat boss("boss", 1);
+    Bureaucrat mid("Mid", 30);
+    Bureaucrat low("low", 150);
 
-        B1.signForm(f1);
-        std::cout << f1 << std::endl;
+    std::cout << boss << " " <<  mid << " " << low << std::endl;
 
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+    std::cout << "=====  Shrubbery test =====" << std::endl;
+
+    ShrubberyCreationForm shrub("home");
+
+    low.executeForm(shrub);
+    low.signForm(shrub);
+    mid.signForm(shrub);
+    low.executeForm(shrub);
+    mid.executeForm(shrub);
+
+    std::cout << "===== Robotomy test =====" << std::endl;
+
+    RobotomyRequestForm robo("amine");
+
+    mid.signForm(robo);
+    mid.executeForm(robo);
+    mid.executeForm(robo);
+    low.signForm(robo);
+    low.executeForm(robo);
+    low.executeForm(robo);
+
+    std::cout << "===== Presidential test =====" << std::endl;
+
+    PresidentialPardonForm pres("youssef");
+
+    mid.signForm(pres);
+    boss.signForm(pres);
+    mid.executeForm(pres);
+    boss.executeForm(pres);
+
+    // std::cout << "===== "
     
-    std::cout << "\n===== FORM CONSTRUCTOR EXCEPTION =====" << std::endl;
-    
-    try
-    {
-        Form bad("BadForm", 0, 1, false);
-
-        std::cout << bad << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-    std::cout << "\n===== BUREAUCRAT CONSTRUCTOR EXCEPTION =====" << std::endl;
-    try
-    {
-        Bureaucrat BadBura("youssef", 160);
-        std::cout << BadBura << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+    return (0);
     
 
 }

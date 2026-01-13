@@ -1,6 +1,6 @@
-NAME = Form
+NAME = form_28B
 
-SRC = main.cpp Bureaucrat.cpp Form.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
 OBJC = ${SRC:.cpp=.o}
 CFLAGE = -Wall -Wextra -Werror -std=c++98  
@@ -9,7 +9,7 @@ RM = rm -rf
 
 all: ${NAME}
 
-%.o: %.cpp Bureaucrat.hpp Form.hpp
+%.o: %.cpp Bureaucrat.hpp AForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp
 	${CC} ${CFLAGE} -c $< -o $@
 
 ${NAME}: ${OBJC}

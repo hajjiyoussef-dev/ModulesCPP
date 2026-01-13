@@ -1,7 +1,8 @@
 #include "RobotomyRequestForm.hpp"
 
 
-RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 72, 45) {
+RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("RobotomyRequestForm", 72, 45) {
+    this->target = target;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj): AForm(obj), target(obj.target) {
@@ -25,7 +26,6 @@ void  RobotomyRequestForm::execute(Bureaucrat const &e) const{
     if (e.getGrade() > getGradeToExecute())
         throw GradeTooLowException();
     std::cout << "* Drilling Noises *" << std::endl;
-
     if(rand() % 2)
         std::cout << target << " has been robotomized successfully " << std::endl;
     else 
