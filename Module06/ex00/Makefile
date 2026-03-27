@@ -1,6 +1,6 @@
-NAME = Bureaucrat
+NAME = convert 
 
-SRC = main.cpp Bureaucrat.cpp 
+SRC = main.cpp 
 
 OBJC = ${SRC:.cpp=.o}
 CFLAGE = -Wall -Wextra -Werror -std=c++98  
@@ -9,7 +9,7 @@ RM = rm -rf
 
 all: ${NAME}
 
-%.o: %.cpp Bureaucrat.hpp 
+%.o: %.cpp 
 	${CC} ${CFLAGE} -c $< -o $@
 
 ${NAME}: ${OBJC}
