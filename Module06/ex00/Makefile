@@ -1,6 +1,6 @@
 NAME = convert 
 
-SRC = main.cpp 
+SRC = main.cpp ScalarConverter.cpp
 
 OBJC = ${SRC:.cpp=.o}
 CFLAGE = -Wall -Wextra -Werror -std=c++98  
@@ -9,7 +9,7 @@ RM = rm -rf
 
 all: ${NAME}
 
-%.o: %.cpp 
+%.o: %.cpp ScalarConverter.hpp
 	${CC} ${CFLAGE} -c $< -o $@
 
 ${NAME}: ${OBJC}
