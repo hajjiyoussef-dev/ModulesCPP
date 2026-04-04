@@ -1,6 +1,6 @@
-NAME = Identify_real_type
+NAME = Bureaucrat
 
-SRC = main.cpp
+SRC = main.cpp Bureaucrat.cpp 
 
 OBJC = ${SRC:.cpp=.o}
 CFLAGE = -Wall -Wextra -Werror -std=c++98  
@@ -9,7 +9,7 @@ RM = rm -rf
 
 all: ${NAME}
 
-%.o: %.cpp Base.hpp A.hpp B.hpp C.hpp
+%.o: %.cpp Bureaucrat.hpp 
 	${CC} ${CFLAGE} -c $< -o $@
 
 ${NAME}: ${OBJC}
