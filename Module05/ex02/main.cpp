@@ -9,6 +9,8 @@
 
 int main(void){
 
+    
+
     srand(time(NULL));
 
     std::cout << "===== BUREAUCRATS =====" << std::endl;
@@ -49,7 +51,6 @@ int main(void){
     mid.executeForm(pres);
     boss.executeForm(pres);
 
-    // std::cout << "===== "
     
     return (0);
     
