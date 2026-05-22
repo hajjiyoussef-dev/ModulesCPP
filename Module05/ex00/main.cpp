@@ -16,12 +16,10 @@ int main( void )
         a.incrementGrade();
         std::cout << a << std::endl;
     }
-    catch(const std::exception& e)
+    catch(const std::exception &e)
     {
         std::cerr << e.what() << '\n';
     }
     
-    
-
     return (0);
 }
