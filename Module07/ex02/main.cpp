@@ -6,11 +6,11 @@ int main(void){
 
     Array<int> arr(5);
 
-    for (size_t i = 0; i < arr.size(); i++)
+    for (size_t i = 0; i < 5; i++)
     {
         arr[i] = i * 2;
     }
-    for (size_t i = 0; i < arr.size(); i++)
+    for (size_t i = 0; i < 5; i++)
     {
         std::cout << arr[i] << std::endl;
     }
@@ -20,6 +20,14 @@ int main(void){
         std::cout << arr[10] << std::endl; 
     }
     catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    try
+    {
+        std::cout << arr[-10];
+    }
+     catch (std::exception &e)
     {
         std::cout << e.what() << std::endl;
     }
