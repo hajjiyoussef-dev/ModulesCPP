@@ -6,6 +6,7 @@
 #include <cmath>
 #include <cctype>
 #include <string>
+#include <sstream>
 #include <climits>
 #include <cerrno>
 
@@ -31,10 +32,9 @@ static bool ispseudoliterals(const std::string &s){
 
 
 void printChar(char value){
-
+    
     std::cout <<  "char: ";
-
-    if (std::isnan(value) || value < 0 || value > 127)
+    if (value < 0 || value >= 127)
         std::cout << "impossible";
     else if (value < 32 || value > 126)
         std::cout << "Non displayable";
@@ -46,10 +46,7 @@ void printChar(char value){
 void printInt(int value){
 
     std::cout << "int: ";
-    if (std::isnan(value) || value > std::numeric_limits<int>::max() || value < std::numeric_limits<int>::min())
-        std::cout << "impossible";
-    else 
-        std::cout << value;
+    std::cout << value;
     std::cout << std::endl;
 }
 
@@ -181,11 +178,12 @@ bool isPseudoFloat(const std::string &s)
     return (s == "nanf" || s == "+inff" || s == "-inff");
 }
 
-void ScalarConverter::convert(const std::string &value){
-
-
+void ScalarConverter::convert(const std::string &value)
+{
     if (isChar(value)){
+        std::cout << "test char " << std::endl;
         char c = value[0];
+        
         printChar(c);
         printInt(static_cast<int>(c));
         printFloat(static_cast<float>(c));
@@ -193,61 +191,82 @@ void ScalarConverter::convert(const std::string &value){
         return;
 
     }else if (isInt(value)){
+
+        std::cout << "test int" << std::endl;
         bool ok;
         long n = parseInt(value, ok);
 
         if (!ok){
+            long double orig = std::strtold(value.c_str(), NULL);
             std::cout << "char: impossible\n";
             std::cout << "int: impossible\n";
-            std::cout << "float: impossible\n";
-            std::cout << "double: impossible\n";
+            printFloat(static_cast<float>(orig));
+            printDouble(static_cast<double>(orig));
             return;
         }
 
-        printChar(static_cast<char>(n));
-        printInt((n));
+        if (n < 0 || n >= 127)
+            std::cout << "char: impossible" << std::endl;
+        else if (n < 32 || n > 126)
+            std::cout << "char: Non displayable" << std::endl;
+        else 
+            printChar(static_cast<char>(n));
+        printInt(n);
         printFloat(static_cast<float>(n));
         printDouble(static_cast<double>(n));
-        return;
-
-    }else if (isFloat(value)){
-
-        float f = std::atof(value.c_str());
-
-        printChar(static_cast<char>(f));
-        printInt(static_cast<int>(f));
-        printFloat(f);
-        printDouble(static_cast<double>(f));
-        return;
-
-    }else if (isDouble(value)){
-
-        double d = std::strtod(value.c_str(), NULL);
-
-        printChar(static_cast<char>(d));
-        printInt(static_cast<int>(d));
-        printFloat(static_cast<float>(d));
-        printDouble(d);
         return;
 
     }else if (ispseudoliterals(value)){
 
         if (isPseudoFloat(value)){
             float f = std::atof(value.c_str());
-
-            printChar(static_cast<char>(f));
-            printInt(static_cast<int>(f));
+            std::cout << "char: impossible\n";
+            std::cout << "int: impossible\n";
             printFloat(f);
             printDouble(static_cast<double>(f));
             return;
         }else{
             double d = std::strtod(value.c_str(), NULL);
-            printChar(static_cast<char>(d));
-            printInt(static_cast<int>(d));
+            std::cout << "char: impossible\n";
+            std::cout << "int: impossible\n";
             printFloat(static_cast<float>(d));
             printDouble(d);
             return;
         }
+
+    }else if (isFloat(value)){
+
+        std::cout << "test float" << std::endl;
+        float f = std::atof(value.c_str());
+        printChar(static_cast<char>(f));
+        long double orig = std::strtold(value.c_str(), NULL);
+        bool is_nan = (orig != orig);
+        bool is_finite = (orig == std::numeric_limits<long double>::infinity() || orig == -std::numeric_limits<long double>::infinity());
+        if (is_nan || is_finite|| orig > static_cast<long double>(std::numeric_limits<int>::max()) || orig < static_cast<long double>(std::numeric_limits<int>::min()))
+            std::cout << "int: impossible" << std::endl;
+        else
+            printInt(static_cast<int>(orig));
+        printFloat(f);
+        printDouble(static_cast<double>(f));
+        return;
+
+    }else if (isDouble(value)){
+
+        std::cout << "test double" << std::endl;
+
+        double d = std::strtod(value.c_str(), NULL);
+
+        printChar(static_cast<char>(d));
+        long double orig = std::strtold(value.c_str(), NULL);
+        bool is_nan = (orig != orig);
+        bool is_finite = (orig == std::numeric_limits<long double>::infinity() || orig == -std::numeric_limits<long double>::infinity());
+        if (is_nan || is_finite || orig > static_cast<long double>(std::numeric_limits<int>::max()) || orig < static_cast<long double>(std::numeric_limits<int>::min()))
+            std::cout << "int: impossible" << std::endl;
+        else
+            printInt(static_cast<int>(orig));
+        printFloat(static_cast<float>(d));
+        printDouble(d);
+        return;
     }
    
     std::cout << "char: impossible\n";

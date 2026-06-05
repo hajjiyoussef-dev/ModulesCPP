@@ -14,7 +14,6 @@ int main(void){
     {
         std::cout << arr[i] << std::endl;
     }
-
     try
     {
         std::cout << arr[10] << std::endl; 
