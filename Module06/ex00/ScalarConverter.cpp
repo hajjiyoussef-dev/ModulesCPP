@@ -120,7 +120,8 @@ bool isFloat(const std::string &s){
     {
         if (s[i] == '.')
         {
-            if (dot) return false;
+            if (dot) 
+                return false;
             dot = true;
         }
         else if (!std::isdigit(s[i]))
@@ -128,7 +129,6 @@ bool isFloat(const std::string &s){
     }
 
     return dot;
-
 }
 
 bool isDouble(const std::string &s){
@@ -150,7 +150,6 @@ bool isDouble(const std::string &s){
         else if (!std::isdigit(s[i]))
             return false;
     }
-
     return dot;
 
 }

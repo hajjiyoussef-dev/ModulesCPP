@@ -20,7 +20,6 @@ class Array
 
         }
         ~Array(){
-
             delete[] data;
         }
 
@@ -31,6 +30,7 @@ class Array
                 data[i] = T();
             }
         }
+        
         Array& operator=(const Array& obj){
             if (this != &obj){
                 delete[] data;
