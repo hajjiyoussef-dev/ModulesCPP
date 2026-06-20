@@ -1,6 +1,6 @@
 NAME = Easy_find
 
-SRC = main.cpp  easyfind.cpp
+SRC = main.cpp 
 
 OBJC = ${SRC:.cpp=.o}
 

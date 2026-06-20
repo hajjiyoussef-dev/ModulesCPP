@@ -20,8 +20,28 @@ public:
     }
 };
 
+# include <vector>
+# include <algorithm>
+template<typename T>
+void print(T d) {
+    std::cout << "size "<< d.size();
+}
 int main() {
-    Employee emp("Fedrick", 50000, 101);
-    cout << emp.getdhdh() << endl;   
+    // Employee emp("Fedrick", 50000, 101);
+    // cout << emp.getdhdh() << endl;
+    std::vector<int> v;
+    for (size_t i = 0; i < 20; i++)
+    {
+        v.push_back(i);
+        std::cout << "size :" << v.size() << std::endl;
+        std::cout << "capacity :" << v.capacity() << std::endl;
+    }
+    
+    
+    // v.push_back(1);
+
+
+    // std::cout << &it << std::endl;
+
     return 0;
 }
