@@ -1,6 +1,6 @@
-NAME = Span
+NAME = mutated_abomination
 
-SRC = main.cpp  Span.cpp
+SRC = main.cpp 
 
 OBJC = ${SRC:.cpp=.o}
 
@@ -10,7 +10,7 @@ RM = rm -rf
 
 all: ${NAME}
 
-%.o: %.cpp Span.hpp
+%.o: %.cpp MutantStack.hpp
 	${CC} ${CFLAGE} -c $< -o $@
 
 ${NAME}: ${OBJC}
