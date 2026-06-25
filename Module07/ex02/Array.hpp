@@ -17,15 +17,12 @@ class Array
             for (unsigned int i = 0; i < size1; i++){
                 data[i] = obj.data[i];
             }
-
         }
         ~Array(){
             delete[] data;
         }
 
-        Array(unsigned int n){
-
-            data  = new T[n];
+        Array(unsigned int n) : data(new T[n]), size1(n) {
             for (unsigned int i = 0; i < n; i++){
                 data[i] = T();
             }
@@ -36,8 +33,7 @@ class Array
                 delete[] data;
                 size1 = obj.size1;
                 data = new T[size1];
-                for (size_t i = 0; i < size1; i++)
-                {
+                for (unsigned int i = 0; i < size1; i++){
                     data[i]  = obj.data[i];
                 }
             }
@@ -61,7 +57,6 @@ class Array
         }
 
         unsigned int size() const{
-
             return size1;
         }
 

@@ -3,33 +3,30 @@
 
 #include <iostream>
 
-
-
 template <typename T>
 void swap(T &a, T &b){
 
-    T tmp;
-
-    tmp = a;
+    T tmp = a;
     a  = b;
     b = tmp;
 
 }
 
+template <class T>
+void func(std x)
+{
+    std::cout << std::endl;
+}
+
 template <typename T>
-T min(const T &a, const T &b){
+T const& min(const T &a, const T &b){
     return ((a < b) ? a : b);
 }
 
 template <typename T>
-T max(const T &a, const T &b){
+T const& max(const T &a, const T &b){
     return ((a > b) ? a : b );
 }
-
-
-
-
-
 
 
 #endif

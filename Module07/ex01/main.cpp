@@ -3,13 +3,12 @@
 
 void printIntConst(int const &x){
     std::cout << x ;
-    // std::cout << "\n";
 }
 
 void printInt(int &x){
     std::cout << x ;
-    
 }
+
 
 int func(int &x){
     x *= 2;

@@ -15,7 +15,6 @@ class MutantStack : public std::stack<T>
         ~MutantStack();
 
         typedef typename std::stack<T>::container_type::iterator ite;
-
         ite begin();
         ite end();
 };

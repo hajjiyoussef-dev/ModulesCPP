@@ -61,7 +61,6 @@ int Span::longestSpan(){
     return (longest);
 }
 
-
 Span::~Span() {}
 
 
