@@ -8,17 +8,17 @@ class Span
 {
     private:
         unsigned int maximum;
-        std::vector<int> nbr;
+        std::vector<long long> nbr;
     public:
         Span();
         Span(unsigned int N);
         Span(const Span& obj);
         Span& operator=(const Span& obj);
         ~Span();
-        void addNumber(int number);
+        void addNumber(long long number); 
 
-        int shortestSpan();
-        int longestSpan();
+        long long shortestSpan();
+        long long longestSpan();
 
         class SpanFullException : public std::exception
         {
@@ -37,6 +37,16 @@ class Span
                     return "Not enough numbers to calculate span";
                 }
         };
+
+        template <typename I>
+        void addRang(I begin, I end){
+
+            while (begin != end){
+                addNumber(*begin);
+                ++begin;
+            }
+
+        }
 
         
 };

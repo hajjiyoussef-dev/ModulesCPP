@@ -23,22 +23,21 @@ Span& Span::operator=(const Span& obj){
 }
 
 
-void Span::addNumber(int number){
+void Span::addNumber(long long number){
 
     unsigned int size = nbr.size();
-
     if (size == maximum)
         throw SpanFullException();
     nbr.push_back(number);
 }
 
-int Span::shortestSpan(){
+long long Span::shortestSpan(){
 
     unsigned int size = nbr.size();
     if (size == 1 || size == 0)
         throw std::exception();
     
-    std::vector<int> tmp = nbr;
+    std::vector<long long> tmp = nbr;
     std::sort(tmp.begin(), tmp.end());
     int shortTest = tmp[1] - tmp[0]; 
     for (unsigned int i = 0; i < tmp.size() - 1; i++){
@@ -49,7 +48,7 @@ int Span::shortestSpan(){
     return (shortTest);
 }
 
-int Span::longestSpan(){
+long long Span::longestSpan(){
 
     int size = nbr.size();
     if (size == 1 || size == 0)
