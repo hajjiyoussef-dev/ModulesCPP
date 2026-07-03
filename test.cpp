@@ -2,6 +2,7 @@
 
 
 # include <vector>
+#include <list>
 # include <algorithm>
 template<typename T>
 void print(T d) {
@@ -36,6 +37,19 @@ int main() {
     // it  = v.begin();
 
     // std::cout << *it << std::endl;
+
+    std::list<std::string> l(5, "hello");
+
+    for (std::list<std::string>::iterator it = l.begin(); it != l.end(); it++){
+        std::cout << *it << std::endl;
+        std::cout  << l.max_size() << std::endl;
+    }
+    
+    // for (size_t i = 0; i < l.size(); i++)
+    // {
+    //     l.
+    // }
+    
 
     return 0;
 }
