@@ -5,7 +5,7 @@
 int main(int ac, char **av){
     
     if (ac != 2)
-        return (std::cout << "The program should take a input" << std::endl, 1);
+        return (std::cout << "Error: could not open file." << std::endl, 1);
     try
     {
         BitcoinExchange bex;

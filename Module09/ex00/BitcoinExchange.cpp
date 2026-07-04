@@ -62,7 +62,6 @@ bool BitcoinExchange::validValue(double value) const {
 double BitcoinExchange::findRate(const std::string& date) const{
 
     std::map<std::string, double>::const_iterator ite;
-    // std::cout << date << std::endl;
     ite = _database.lower_bound(date);
 
     if (ite == _database.end()){
@@ -119,45 +118,55 @@ void BitcoinExchange::processInput(const std::string& filename){
     loadDatabase("data.csv");
     std::ifstream file(filename.c_str());
     if (!file.is_open())
-        throw std::runtime_error("Input file not found");
+        throw std::runtime_error("Error: Input file not found");
     std::string line;
     if (!std::getline(file, line))
-        throw std::runtime_error("Empty input file");
+        throw std::runtime_error("Error: Empty input file");
     if (line != "date | value")
-        throw std::runtime_error("Input form error");
+        throw std::runtime_error("Error: Input form error");
     while (std::getline(file, line))
     {
-        size_t date_p = line.find("|");
-        if (date_p == std::string::npos)
-            throw std::runtime_error("Bad Input line");
-        std::string date = trim(line.substr(0, date_p));
-        std::string valuestr = trim(line.substr(date_p + 1));
-        if (!validDate(date))
-            throw std::runtime_error("Error Input invalid");
-        
-        std::stringstream ss(valuestr);
-        double value;
-        char extra;
-        
-        if (!(ss >> value) || (ss >> extra)){
-            std::cout << value;
-            throw std::runtime_error("Error invalid rate valuess");
-        }
-        if (!validValue(value)){
-            if (value < 0)
-                std::cerr << "Error: not a positive number." << std::endl;
-            else
-                std::cerr << "Error: too large a number." << std::endl;
-            continue;
-        }
+        try
+        {
+            size_t date_p = line.find("|");
+            if (date_p == std::string::npos){
+                std::cout << "Error: bad input => " << line << std::endl;
+                continue;
+            }
+            std::string date = trim(line.substr(0, date_p));
+            std::string valuestr = trim(line.substr(date_p + 1));
+            if (!validDate(date)){
+                std::cerr << "Error: bad input => " << line << std::endl;
+                continue;
+            }
+            
+            std::stringstream ss(valuestr);
+            double value;
+            char extra;
+            
+            if (!(ss >> value) || (ss >> extra)){
+                throw std::runtime_error("Error: invalid rate values");
+            }
+            if (!validValue(value)){
+                if (value < 0)
+                    std::cerr << "Error: not a positive number." << std::endl;
+                else
+                    std::cerr << "Error: too large a number." << std::endl;
+                continue;
+            }
 
-        double rate =  findRate(date);
-        std::cout << date
-                  << " => "
-                  << value
-                  << " = "
-                  << value * rate
-                  << std::endl;
+            double rate =  findRate(date);
+            std::cout << date
+                    << " => "
+                    << value
+                    << " = "
+                    << value * rate
+                    << std::endl;
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
     }
 }
 
