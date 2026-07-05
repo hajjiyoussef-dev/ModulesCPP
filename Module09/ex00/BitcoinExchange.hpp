@@ -17,7 +17,7 @@ class BitcoinExchange
         double findRate(const std::string& date) const;
         std::string trim(const std::string& str) const;
     public:
-        BitcoinExchange(/* args */);
+        BitcoinExchange();
         BitcoinExchange(const BitcoinExchange& obj);
         BitcoinExchange& operator=(const BitcoinExchange& obj);
         ~BitcoinExchange();

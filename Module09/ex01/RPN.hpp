@@ -2,11 +2,12 @@
 
 #include <stack>
 #include <iostream>
+#include <sstream>
 
 class RPN
 {
     private:
-        std::stack<int> _stack;
+        std::stack<long long> _stack;
     public:
         RPN();
         RPN(const RPN& obj);

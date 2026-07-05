@@ -1,6 +1,6 @@
-NAME = RPN
+NAME = PmergeMe
 
-SRC = main.cpp RPN.cpp
+SRC = main.cpp PmergeMe.cpp
 
 OBJC = ${SRC:.cpp=.o}
 
@@ -10,7 +10,7 @@ RM = rm -rf
 
 all: ${NAME}
 
-%.o: %.cpp RPN.hpp
+%.o: %.cpp PmergeMe.hpp
 	${CC} ${CFLAGE} -c $< -o $@
 
 ${NAME}: ${OBJC}
