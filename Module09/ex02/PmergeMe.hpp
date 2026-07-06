@@ -1,18 +1,30 @@
 #pragma once
 
+#include <vector>
+#include <iostream>
+#include <list>
+#include <sstream>
+#include <climits>
+#include <ctime>
+
 class PmergeMe
 {
-private:
-    /* data */
-public:
-    PmergeMe(/* args */);
-    ~PmergeMe();
+    private:
+        std::vector<int> _vector;
+        std::list<int> _list;
+    public:
+        PmergeMe();
+        PmergeMe(const PmergeMe &obj);
+        PmergeMe& operator=(const PmergeMe& obj);
+        ~PmergeMe();
+
+        void parse(char **av);
+        void printBefore();
+        void printAfter();
+        void sortVector();
+        void sorList();
+        void printTime(std::clock_t t1, std::clock_t t2);
 };
 
-PmergeMe::PmergeMe(/* args */)
-{
-}
 
-PmergeMe::~PmergeMe()
-{
-}
+

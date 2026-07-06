@@ -22,7 +22,7 @@ The project name `PmergeMe` stands for "Pair Merge Sort" - a reference to how th
   3. Use binary insertion to insert the "loser" elements (smaller elements) into the sorted list
   4. This approach reduces total comparisons
 
-#### Why This Algorithm?
+#### Why This Algorithm ?
 - `std::sort` minimizes runtime but not necessarily comparisons
 - Ford-Johnson is mathematically proven to minimize comparisons
 - Useful in scenarios where comparison is expensive (e.g., custom objects, I/O operations)
