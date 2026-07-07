@@ -21,7 +21,7 @@ class PmergeMe
         void parse(char **av);
         void printBefore();
         void printAfter();
-        void sortVector();
+        std::vector<int> sortVector(std::vector<int> v);
         void sorList();
         void printTime(std::clock_t t1, std::clock_t t2);
 };

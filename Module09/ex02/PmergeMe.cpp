@@ -61,9 +61,34 @@ void PmergeMe::sorList(){
 }
 
 
-void PmergeMe::sortVector(){
+std::vector<int> PmergeMe::sortVector(std::vector<int> v){
 
     std::vector< std::pair<int, int> > _pairs;
+    int struggler;
+
+    if (_vector.size() % 2 != 0)
+        struggler = _vector.back();
+
+    for (size_t i = 0; i < _vector.size() - 1; i += 2)
+    {
+        if (_vector[i] < _vector[i + 1])
+            _pairs.push_back(std::make_pair(_vector[i], _vector[i + 1]));
+        else 
+            _pairs.push_back(std::make_pair(_vector[i + 1], _vector[i]));
+    }
+
+    std::vector<int> win;
+
+    for (size_t i = 0; i < _pairs.size(); i++){
+        win.push_back(_pairs[i].second);
+    }
+
+    win = sortVector(win)
+
+    // std::cout <<  "sdv sdjvb" <<struggler << std::endl;
+    
+    
+    
 
 }
 
