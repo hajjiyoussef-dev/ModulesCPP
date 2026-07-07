@@ -16,6 +16,8 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& obj){
     return *this;
 }
 
+
+
 void PmergeMe::parse(char **av){
 
     for (size_t i = 1; av[i]; i++)
@@ -60,36 +62,68 @@ void PmergeMe::sorList(){
 
 }
 
+std::vector< std::pair<int,int> > PmergeMe::makePairs(const std::vector<int>& v){
 
-std::vector<int> PmergeMe::sortVector(std::vector<int> v){
-
-    std::vector< std::pair<int, int> > _pairs;
     int struggler;
 
-    if (_vector.size() % 2 != 0)
-        struggler = _vector.back();
+    std::vector< std::pair<int, int> > _pairs;
 
-    for (size_t i = 0; i < _vector.size() - 1; i += 2)
+    if (v.size() % 2 != 0)
+        struggler = v.back();
+
+    for (size_t i = 0; i < v.size() - 1; i += 2)
     {
-        if (_vector[i] < _vector[i + 1])
-            _pairs.push_back(std::make_pair(_vector[i], _vector[i + 1]));
+        if (v[i] < v[i + 1])
+            _pairs.push_back(std::make_pair(v[i], v[i + 1]));
         else 
-            _pairs.push_back(std::make_pair(_vector[i + 1], _vector[i]));
+            _pairs.push_back(std::make_pair(v[i + 1], v[i]));
     }
+    return (_pairs);
+}
+
+std::vector<int> PmergeMe::getLargPairs(const std::vector< std::pair<int,int> >& pairs){
 
     std::vector<int> win;
 
-    for (size_t i = 0; i < _pairs.size(); i++){
-        win.push_back(_pairs[i].second);
+    for (size_t i = 0; i < pairs.size(); i++){
+        win.push_back(pairs[i].second);
     }
+    return (win);
+}
 
-    win = sortVector(win)
+
+std::vector<int> PmergeMe::getSmalPair(const std::vector< std::pair<int,int> >& pairs){
+
+    std::vector<int> win;
+
+    for (size_t i = 0; i < pairs.size(); i++){
+        win.push_back(pairs[i].first);
+    }
+    return (win);
+}
+
+std::vector<int> PmergeMe::sortVector(std::vector<int> v){
+
+    if (v.size() <= 1)
+        return (v);
+
+    std::vector< std::pair<int, int> > _pairs = makePairs(v);
+    
+    std::vector< int > largPairs = getLargPairs(_pairs);
+
+    std::vector< int > smalPair = getSmalPair(_pairs);
+
+    largPairs = sortVector(largPairs);
+
 
     // std::cout <<  "sdv sdjvb" <<struggler << std::endl;
-    
-    
-    
 
+
+}
+
+void PmergeMe::sort(){
+
+    _vector = sortVector(_vector);
 }
 
 
