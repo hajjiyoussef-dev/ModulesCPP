@@ -101,6 +101,19 @@ std::vector<int> PmergeMe::getSmalPair(const std::vector< std::pair<int,int> >& 
     }
     return (win);
 }
+void PmergeMe::insertSmall(std::vector<int> &largPairs, std::vector< std::pair<int,int> > &pairs){
+
+    for (size_t i = 0; i < pairs.size(); i++)
+    {
+        int small = pairs[i].first;
+        int partner = pairs[i].second;
+
+        std::vector<int>::iterator limit = std::find(largPairs.begin(), largPairs.end(), partner);
+        std::vector<int>::iterator pos =  std::lower_bound(largPairs.begin(), limit + 1, small);
+        largPairs.insert(pos, small);
+    }
+    
+}
 
 std::vector<int> PmergeMe::sortVector(std::vector<int> v){
 
@@ -111,14 +124,14 @@ std::vector<int> PmergeMe::sortVector(std::vector<int> v){
     
     std::vector< int > largPairs = getLargPairs(_pairs);
 
-    std::vector< int > smalPair = getSmalPair(_pairs);
+    // std::vector< int > smalPair = getSmalPair(_pairs); // just remove this 
 
     largPairs = sortVector(largPairs);
 
-
+    insertSmall(largPairs, _pairs);
     // std::cout <<  "sdv sdjvb" <<struggler << std::endl;
 
-
+    return (largPairs);
 }
 
 void PmergeMe::sort(){

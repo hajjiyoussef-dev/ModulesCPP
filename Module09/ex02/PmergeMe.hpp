@@ -6,6 +6,7 @@
 #include <sstream>
 #include <climits>
 #include <ctime>
+#include <algorithm>
 
 class PmergeMe
 {
@@ -28,6 +29,7 @@ class PmergeMe
         std::vector< std::pair<int,int> > makePairs(const std::vector<int>& v);
         std::vector<int> getLargPairs(const std::vector< std::pair<int,int> >& pairs);
         std::vector<int> getSmalPair(const std::vector< std::pair<int,int> >& pairs);
+        void insertSmall(std::vector<int> &largPairs, std::vector< std::pair<int,int> > &pairs);
 };
 
 
