@@ -30,6 +30,7 @@ class PmergeMe
         std::vector<int> getLargPairs(const std::vector< std::pair<int,int> >& pairs);
         std::vector<int> getSmalPair(const std::vector< std::pair<int,int> >& pairs);
         void insertSmall(std::vector<int> &largPairs, std::vector< std::pair<int,int> > &pairs);
+        void insertStruggler(std::vector<int> &largPairs, int struggler);
 };
 
 
