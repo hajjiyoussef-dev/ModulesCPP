@@ -12,10 +12,10 @@ int main(int ac, char **av){
         pme.parse(av);
         pme.printBefore();
         std::clock_t start_time1 = std::clock();
-        pme.sort();
+        pme.sortV();
         start_time1 = std::clock() - start_time1;
         std::clock_t start_time2 = std::clock();
-        pme.sorList();
+        pme.sortD();
         start_time2 = std::clock() - start_time2;
         pme.printAfter();
         pme.printTime(start_time1, start_time2);
