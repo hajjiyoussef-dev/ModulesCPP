@@ -1,20 +1,15 @@
 #include "Span.hpp"
 
 
-
 Span::Span() {}
 
-Span::Span(unsigned int N) : maximum(N) {
-
-}
+Span::Span(unsigned int N) : maximum(N) {}
 
 Span::Span(const Span& obj){
-
     *this = obj;
 }
 
 Span& Span::operator=(const Span& obj){
-
     if (this != &obj){
         maximum = obj.maximum;
         nbr = obj.nbr;
@@ -31,36 +26,36 @@ void Span::addNumber(long long number){
     nbr.push_back(number);
 }
 
+
 long long Span::shortestSpan(){
 
     unsigned int size = nbr.size();
     if (size == 1 || size == 0)
-        throw std::exception();
+        throw NoSpanException();
     
     std::vector<long long> tmp = nbr;
     std::sort(tmp.begin(), tmp.end());
     int shortTest = tmp[1] - tmp[0]; 
     for (unsigned int i = 0; i < tmp.size() - 1; i++){
-        int diff =tmp[i + 1] - tmp[i];
+        long long  diff = tmp[i + 1] - tmp[i];
         if (diff < shortTest)
             shortTest = diff;
     }
     return (shortTest);
 }
 
+
 long long Span::longestSpan(){
 
-    int size = nbr.size();
+    size_t size = nbr.size();
     if (size == 1 || size == 0)
-        throw std::exception();
-    int min = *std::min_element(nbr.begin(), nbr.end());
-    int max = *std::max_element(nbr.begin(), nbr.end());
+        throw NoSpanException();
+    long long min = *std::min_element(nbr.begin(), nbr.end());
+    long long max = *std::max_element(nbr.begin(), nbr.end());
 
-    int longest = max - min;
+    long long longest = max - min;
     return (longest);
 }
 
 Span::~Span() {}
-
-
 

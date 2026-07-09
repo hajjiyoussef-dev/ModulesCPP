@@ -38,6 +38,8 @@ class PmergeMe
         void insertSmall_D(std::deque<int> &largPairs, std::deque< std::pair<int,int> > &pairs);
         void insertStruggler_D(std::deque<int> &largPairs, int struggler);
 
+        std::vector<size_t> jacobsthalOrder(size_t n);
+
 
 
 };

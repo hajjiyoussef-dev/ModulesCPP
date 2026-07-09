@@ -39,7 +39,7 @@ class Span
         };
 
         template <typename I>
-        void addRang(I begin, I end){
+        void addRange(I begin, I end){
 
             while (begin != end){
                 addNumber(*begin);

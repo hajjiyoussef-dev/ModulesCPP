@@ -14,7 +14,7 @@ int main(void){
         for (long long i = 0; i < n; i++){
             v.push_back(i);
         }
-        sp.addRang(v.begin(), v.end());
+        sp.addRange(v.begin(), v.end());
         std::cout << sp.shortestSpan() << std::endl;
         std::cout << sp.longestSpan() << std::endl;
     }

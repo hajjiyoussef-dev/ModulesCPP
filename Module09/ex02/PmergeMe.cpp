@@ -105,10 +105,57 @@ std::vector<int> PmergeMe::getSmalPair(const std::vector< std::pair<int,int> >& 
     }
     return (win);
 }
+
+
+std::vector<size_t> PmergeMe::jacobsthalOrder(size_t n){
+
+    std::vector<size_t> order;
+
+    if (n == 0)
+        return order;
+    order.push_back(0);
+
+    std::vector<size_t> jacob;
+    jacob.push_back(1);
+    jacob.push_back(3);
+
+    while (jacob.back() < n)
+        jacob.push_back(jacob[jacob.size() - 1] + 2 * jacob[jacob.size() - 2]);
+
+    std::vector<bool> used(n, false);
+    used[0] = true;
+
+    for (size_t i = 1; i < jacob.size(); i++)
+    {
+        size_t start = std::min(jacob[i], n);
+
+        for (size_t j = start; j > jacob[i - 1]; --j)
+        {
+            if (!used[j - 1])
+            {
+                order.push_back(j - 1);
+                used[j - 1] = true;
+            }
+        }
+    }
+
+    for (size_t i = 0; i < n; i++)
+    {
+        if (!used[i])
+            order.push_back(i);
+    }
+
+    return order;
+}
+
+
 void PmergeMe::insertSmall(std::vector<int> &largPairs, std::vector< std::pair<int,int> > &pairs){
 
-    for (size_t i = 0; i < pairs.size(); i++)
+    std::vector<size_t> order = jacobsthalOrder(pairs.size());
+
+    for (size_t k = 0; k < order.size(); k++)
     {
+        size_t i = order[k];
         int small = pairs[i].first;
         int partner = pairs[i].second;
 
@@ -138,11 +185,13 @@ std::vector<int> PmergeMe::sortVector(std::vector<int> v){
         v.pop_back();
     }
     std::vector< std::pair<int, int> > _pairs = makePairs(v);
-    
+
+
     std::vector< int > largPairs = getLargPairs(_pairs);
 
 
     largPairs = sortVector(largPairs);
+    
 
     insertSmall(largPairs, _pairs);
     if (hasStruggler)
@@ -160,7 +209,7 @@ void PmergeMe::sortV(){
 void PmergeMe::printTime(std::clock_t t1, std::clock_t t2){
 
     std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector: " << (static_cast<double>(t1) * 1000000.0) / CLOCKS_PER_SEC << " us " << std::endl;
-    std::cout << "Time to process a range of " << _deque.size() << " elements with std::list: " << (static_cast<double>(t2) * 1000000.0) / CLOCKS_PER_SEC << " us " << std::endl;
+    std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque: " << (static_cast<double>(t2) * 1000000.0) / CLOCKS_PER_SEC << " us " << std::endl;
 }
 
 
@@ -203,8 +252,11 @@ std::deque<int> PmergeMe::getLargPairs_D(const std::deque< std::pair<int,int> >&
 
 void PmergeMe::insertSmall_D(std::deque<int> &largPairs, std::deque< std::pair<int,int> > &pairs){
 
-    for (size_t i = 0; i < pairs.size(); i++)
+    std::vector<size_t> order = jacobsthalOrder(pairs.size());
+
+    for (size_t k = 0; k < order.size(); k++)
     {
+        size_t i = order[k];
         int small = pairs[i].first;
         int partner = pairs[i].second;
 
