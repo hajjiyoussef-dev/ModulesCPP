@@ -41,7 +41,6 @@ class PmergeMe
         std::vector<size_t> jacobsthalOrder(size_t n);
 
 
-
 };
 
 

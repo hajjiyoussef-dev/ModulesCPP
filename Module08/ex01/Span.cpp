@@ -35,7 +35,7 @@ long long Span::shortestSpan(){
     
     std::vector<long long> tmp = nbr;
     std::sort(tmp.begin(), tmp.end());
-    int shortTest = tmp[1] - tmp[0]; 
+    long long shortTest = tmp[1] - tmp[0]; 
     for (unsigned int i = 0; i < tmp.size() - 1; i++){
         long long  diff = tmp[i + 1] - tmp[i];
         if (diff < shortTest)

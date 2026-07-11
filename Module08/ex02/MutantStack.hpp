@@ -8,6 +8,7 @@ template <typename T>
 
 class MutantStack : public std::stack<T>
 {
+
     public:
         MutantStack();
         MutantStack(const MutantStack& obj);
@@ -18,6 +19,9 @@ class MutantStack : public std::stack<T>
         ite begin();
         ite end();
 };
+
+
+
 
 template <typename T>
 MutantStack<T>::MutantStack() : std::stack<T>() {}

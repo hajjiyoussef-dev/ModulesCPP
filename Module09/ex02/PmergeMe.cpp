@@ -17,7 +17,6 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& obj){
 }
 
 
-
 void PmergeMe::parse(char **av){
 
     for (size_t i = 1; av[i]; i++)
@@ -66,32 +65,11 @@ void PmergeMe::printAfter(){
 
 
 
-std::vector< std::pair<int,int> > PmergeMe::makePairs(const std::vector<int>& v){
-
-    int struggler;
-
-    std::vector< std::pair<int, int> > _pairs;
-
-    if (v.size() % 2 != 0)
-        struggler = v.back();
-
-    for (size_t i = 0; i < v.size() - 1; i += 2)
-    {
-        if (v[i] < v[i + 1])
-            _pairs.push_back(std::make_pair(v[i], v[i + 1]));
-        else 
-            _pairs.push_back(std::make_pair(v[i + 1], v[i]));
-    }
-    return (_pairs);
-}
-
 std::vector<int> PmergeMe::getLargPairs(const std::vector< std::pair<int,int> >& pairs){
 
     std::vector<int> win;
 
-    for (size_t i = 0; i < pairs.size(); i++){
-        win.push_back(pairs[i].second);
-    }
+   
     return (win);
 }
 
@@ -184,12 +162,20 @@ std::vector<int> PmergeMe::sortVector(std::vector<int> v){
         struggler = v.back();
         v.pop_back();
     }
-    std::vector< std::pair<int, int> > _pairs = makePairs(v);
+    std::vector< std::pair<int, int> > _pairs ;
+    for (size_t i = 0; i < v.size() - 1; i += 2)
+    {
+        if (v[i] < v[i + 1])
+            _pairs.push_back(std::make_pair(v[i], v[i + 1]));
+        else 
+            _pairs.push_back(std::make_pair(v[i + 1], v[i]));
+    }
 
-
-    std::vector< int > largPairs = getLargPairs(_pairs);
-
-
+    std::vector<int> largPairs;
+     for (size_t i = 0; i < _pairs.size(); i++){
+        largPairs.push_back(_pairs[i].second);
+    }
+    
     largPairs = sortVector(largPairs);
     
 
@@ -208,8 +194,8 @@ void PmergeMe::sortV(){
 
 void PmergeMe::printTime(std::clock_t t1, std::clock_t t2){
 
-    std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector: " << (static_cast<double>(t1) * 1000000.0) / CLOCKS_PER_SEC << " us " << std::endl;
-    std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque: " << (static_cast<double>(t2) * 1000000.0) / CLOCKS_PER_SEC << " us " << std::endl;
+    std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector: " << static_cast<double>(t1) << " us " << std::endl;
+    std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque: " << static_cast<double>(t2) << " us " << std::endl;
 }
 
 

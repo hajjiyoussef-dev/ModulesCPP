@@ -5,7 +5,6 @@
 #include <deque>
 
 
-
 int main(void){
 
     std::vector<int> vec;
