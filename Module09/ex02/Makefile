@@ -4,7 +4,7 @@ SRC = main.cpp PmergeMe.cpp
 
 OBJC = ${SRC:.cpp=.o}
 
-CFLAGE = -Wall -Wextra -Werror -std=c++98  
+CFLAGE = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
 CC = c++
 RM = rm -rf 
 

@@ -41,7 +41,8 @@ MutantStack<T>::~MutantStack() {}
 
 template <typename T>
 typename MutantStack<T>::ite MutantStack<T>::begin(){
-    return (this->c.begin());
+    return (this->);
+    
 }
 
 template <typename T>

@@ -4,7 +4,7 @@ SRC = main.cpp RPN.cpp
 
 OBJC = ${SRC:.cpp=.o}
 
-CFLAGE = -Wall -Wextra -Werror -std=c++98  
+CFLAGE = -Wall -Wextra -Werror -std=c++98
 CC = c++
 RM = rm -rf 
 
