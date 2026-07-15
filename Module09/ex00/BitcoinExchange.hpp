@@ -25,5 +25,3 @@ class BitcoinExchange
         void processInput(const std::string& filename);
 
 };
-
-

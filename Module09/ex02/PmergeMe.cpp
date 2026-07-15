@@ -173,8 +173,8 @@ void PmergeMe::sortV(){
 
 void PmergeMe::printTime(std::clock_t t1, std::clock_t t2){
 
-    double time_v = static_cast<double>(t1)  ;
-    double time_d = static_cast<double>(t2) ;
+    double time_v = static_cast<double>(t1) / CLOCKS_PER_SEC * 1000;
+    double time_d = static_cast<double>(t2) / CLOCKS_PER_SEC * 1000;
     std::cout << std::fixed << std::setprecision(5);
     std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector: " << time_v << " us " << std::endl;
     std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque: " << time_d << " us " << std::endl;
