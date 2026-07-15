@@ -82,10 +82,15 @@ void BitcoinExchange::loadDatabase(const std::string & filename){
     if (!file.is_open())
         throw std::runtime_error("data base file not found");
     std::string line;
+    
     std::getline(file, line);
     if (line != "date,exchange_rate")
         throw std::runtime_error("data base form error");
-    while (std::getline(file, line))
+    
+    std::getline(file, line);
+    if (line.empty())
+        throw std::runtime_error("data base form error");
+    while (!line.empty())
     {
         size_t date_p = line.find(",");
         if (date_p == std::string::npos)
@@ -99,9 +104,10 @@ void BitcoinExchange::loadDatabase(const std::string & filename){
         char extra;
         if (!(ss >> rate) || (ss >> extra))
             throw std::runtime_error("Error invalid rate valuegg");
-        _database.insert(std::make_pair(date, rate)); 
+        _database.insert(std::make_pair(date, rate));
+        line = "";
+        std::getline(file, line);
     }
-
 }
 std::string BitcoinExchange::trim(const std::string& str) const
 {

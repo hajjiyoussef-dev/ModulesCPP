@@ -107,7 +107,6 @@ std::vector<size_t> PmergeMe::jacobsthalOrder(size_t n)
 
 std::vector<int> PmergeMe::sortVector(std::vector<int> v){
 
-     // 3 2 1 0
     if (v.size() <= 1)
         return v;
 
@@ -125,8 +124,6 @@ std::vector<int> PmergeMe::sortVector(std::vector<int> v){
         else
             pairs.push_back(std::make_pair(v[i + 1], v[i]));
     }
-    // {2 3} {0 1}
-  
     std::vector<int> largerElements;
     for (size_t i = 0; i < pairs.size(); i++) {
         largerElements.push_back(pairs[i].first);
@@ -171,6 +168,7 @@ void PmergeMe::sortV(){
     _vector = sortVector(_vector);
 
 }
+
 
 
 void PmergeMe::printTime(std::clock_t t1, std::clock_t t2){
