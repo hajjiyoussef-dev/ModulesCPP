@@ -3,8 +3,11 @@
 #include <iostream>
 #include <algorithm>
 #include <stack>
+#include <vector>
 
 template <typename T>
+
+
 
 class MutantStack : public std::stack<T>
 {
@@ -41,7 +44,7 @@ MutantStack<T>::~MutantStack() {}
 
 template <typename T>
 typename MutantStack<T>::ite MutantStack<T>::begin(){
-    return (this->);
+    return (this->c.begin());
     
 }
 

@@ -7,8 +7,6 @@ int main(void)
     MutantStack<int> mstack;
     std::stack<int> s;
 
-    std::deque<int> d = s._get_container();
-
     mstack.push(5);
     mstack.push(17);
 

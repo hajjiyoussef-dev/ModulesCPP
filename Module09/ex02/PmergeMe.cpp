@@ -103,8 +103,6 @@ std::vector<size_t> PmergeMe::jacobsthalOrder(size_t n)
     return order;
 }
 
-
-
 std::vector<int> PmergeMe::sortVector(std::vector<int> v){
 
     if (v.size() <= 1)
